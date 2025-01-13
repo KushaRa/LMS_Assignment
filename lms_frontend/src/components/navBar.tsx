@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Ensure this is installed and configured
+//import { Link } from 'react-router-dom'; // Ensure this is installed and configured
 import './navBar.css';
 
 type NavBarProps = {};
@@ -11,11 +11,11 @@ const NavBar: React.FC<NavBarProps> = () => {
         <div className='logoN'>LMS</div>
         <ul>
           <li></li>  
-          <li><Link to="/home">Dashboard</Link></li>
+          <li>Dashboard</li>
           <li>Books</li>
-          <li><Link to="/members">Members</Link></li>      
-          <li><button><UserButton /></button></li>
-          <li><button><UserButton /></button></li>
+          <li>Members</li>      
+          <li><button></button></li>
+          
         </ul>
       </nav>
     </div>
