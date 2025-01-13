@@ -1,13 +1,17 @@
-import './App.css'
+import React from 'react';
+import './App.css';
+import Home from "./pages/Home/home/Home";
 
-function App() {
- 
-
+const App: React.FC = () => {
   return (
     <>
-      
+      <Home />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
+
+
+
