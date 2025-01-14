@@ -3,7 +3,7 @@ import React from "react";
 import "./AddBook.css";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
-//import { Book } from "@mui/icons-material";
+
 
 interface Book {
   title: string;
@@ -61,7 +61,7 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
     <div className="addNewBook">
       {/* Heading */}
       <div className="heading">
-        <h2>Add Newsss Book</h2>
+        <h2>Add News Book</h2>
         <button className="closeButton" onClick={onClose}>
           <CloseIcon />
         </button>
@@ -69,7 +69,7 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
 
       {/* Form */}
       <form onSubmit={submitForm}>
-        {/* Row 1 */}
+        {/* Row  */}
         <div className="row1">
           <div className="labelCol">
             <label htmlFor="title">Book Title:</label>
@@ -88,7 +88,7 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
         {/* Section heading */}
         <h3>Book Information</h3>
 
-        {/* Row 2 */}
+        {/* Row  */}
         <div className="row2">
           <div className="labelCol">
             <label htmlFor="author">Author:</label>
@@ -104,8 +104,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Row 3 */}
-        <div className="row1">
+        {/* Row  */}
+        <div className="row3">
           <div className="labelCol">
             <label htmlFor="category">Category:</label>
             <select
@@ -126,8 +126,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Row 4 */}
-        <div className="row2">
+        {/* Row  */}
+        <div className="row4">
           <div className="labelCol">
             <label htmlFor="entrydDate">Entry Date:</label>
             <input
@@ -140,8 +140,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Row 5 */}
-        <div className="row1">
+        {/* Row  */}
+        <div className="row5">
           <div className="labelCol">
             <label htmlFor="description">Other Details:</label>
             <input
