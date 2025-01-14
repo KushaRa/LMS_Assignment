@@ -4,9 +4,9 @@ import Home from "./pages/Home/home/Home";
 
 const App: React.FC = () => {
   return (
-    <>
+    <BrowserRouter>
       <Home />
-    </>
+    </BrowserRouter>
   );
 };
 
