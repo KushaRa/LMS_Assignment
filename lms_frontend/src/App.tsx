@@ -15,3 +15,5 @@ export default App;
 
 
 
+//Remove-Item -Recurse -Force node_modules
+//npm install
