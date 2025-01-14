@@ -3,14 +3,14 @@ import React from "react";
 import "./AddBook.css";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
+//import { Book } from "@mui/icons-material";
 
 interface Book {
   title: string;
   author: string;
   category: string;
-  entrydDate: string; // Matches `EntryDate` (use `string` for easier handling in frontend)
+  entrydDate: string; // Matches `EntryDate` in backend
   description?: string;
-  
 }
 
 interface AddBookProps {
@@ -22,9 +22,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
     title: "",
     author: "",
     category: "",
-    entrydDate: new Date().toISOString().split('T')[0], // Default to current date in "YYYY-MM-DD" format
-    description: ""
-    
+    entrydDate: new Date().toISOString().split("T")[0],
+    description: "",
   };
 
   const [intBook, setBook] = useState<Book>(initialBook);
@@ -35,30 +34,34 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
     console.log(name, value);
   };
 
-
-  const submitForm = async (e) => {
+  // Modified submitForm: No need for book[] array handling
+    const submitForm = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    console.log("Payload sent to backend:", intBook);
     try {
-      const response = await axios.post('https://localhost:7270/api/Books', intBook);
+      const response = await axios.post('https://localhost:7270/api/Books', intBook, {
+        headers: {
+          "Content-Type": "application/json",}
+        });
+      
       if (response.status === 200) {
         console.log("Book Submitted Successfully");
         alert("Book Submitted Successfully");
+        setBook(initialBook);
         window.location.reload(); //  refresh the entire page
       } 
-      setBook(books);
+      
     } catch (err) {
       console.error("Error submitting the book:", err);
       alert("Book is not Submitted. Please try again.");
     }
   };
-  
-  
 
-return (
+  return (
     <div className="addNewBook">
       {/* Heading */}
       <div className="heading">
-        <h2>Add New Book</h2>
+        <h2>Add Newsss Book</h2>
         <button className="closeButton" onClick={onClose}>
           <CloseIcon />
         </button>
@@ -68,7 +71,7 @@ return (
       <form onSubmit={submitForm}>
         {/* Row 1 */}
         <div className="row1">
-         <div className="labelCol">
+          <div className="labelCol">
             <label htmlFor="title">Book Title:</label>
             <input
               type="text"
@@ -77,6 +80,7 @@ return (
               value={intBook.title}
               placeholder="Enter book name"
               onChange={inputHandlers}
+              required
             />
           </div>
         </div>
@@ -95,6 +99,7 @@ return (
               value={intBook.author}
               placeholder="Enter Author name"
               onChange={inputHandlers}
+              required
             />
           </div>
         </div>
@@ -103,7 +108,13 @@ return (
         <div className="row1">
           <div className="labelCol">
             <label htmlFor="category">Category:</label>
-            <select id="category" name="category" value={intBook.category} onChange={inputHandlers}>
+            <select
+              id="category"
+              name="category"
+              value={intBook.category}
+              onChange={inputHandlers}
+              required
+            >
               <option value="">Select Category</option>
               <option value="Novels">Novels</option>
               <option value="Short Stories">Short Stories</option>
@@ -113,28 +124,35 @@ return (
               <option value="History and Geography">History and Geography</option>
             </select>
           </div>
-          </div>
-          
-          <div className="row2">
+        </div>
+
+        {/* Row 4 */}
+        <div className="row2">
           <div className="labelCol">
             <label htmlFor="entrydDate">Entry Date:</label>
             <input
-               type="date"
-               name="entrydDate" // Use the typo to match backend
-               value={book.entrydDate}
-               onChange={handleChange}
-               required
+              type="date"
+              name="entrydDate" // Use the typo to match backend
+              value={intBook.entrydDate}
+              onChange={inputHandlers}
+              required
             />
           </div>
-        
+        </div>
 
+        {/* Row 5 */}
         <div className="row1">
           <div className="labelCol">
-            <label htmlFor="description">Other Details :</label>
-            <input type="text" id="description" name="description" value={intBook.description}  placeholder="Description" onChange={inputHandlers} />
+            <label htmlFor="description">Other Details:</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={intBook.description}
+              placeholder="Description"
+              onChange={inputHandlers}
+            />
           </div>
-
-        </div>
         </div>
 
         {/* Submit button */}
