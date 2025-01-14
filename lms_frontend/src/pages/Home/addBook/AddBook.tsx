@@ -2,15 +2,15 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import React from "react";
 import "./AddBook.css";
 import CloseIcon from "@mui/icons-material/Close";
-//import axios from "axios";
+import axios from "axios";
+//import { Book } from "@mui/icons-material";
 
 interface Book {
-  bookID: string;
-  bookName: string;
+  title: string;
   author: string;
   category: string;
-  other: string;
-  
+  entrydDate: string; // Matches `EntryDate` in backend
+  description?: string;
 }
 
 interface AddBookProps {
@@ -19,12 +19,11 @@ interface AddBookProps {
 
 const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
   const initialBook: Book = {
-    bookID: "",
-    bookName: "",
+    title: "",
     author: "",
     category: "",
-    other: ""
-    
+    entrydDate: new Date().toISOString().split("T")[0],
+    description: "",
   };
 
   const [intBook, setBook] = useState<Book>(initialBook);
@@ -35,18 +34,34 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
     console.log(name, value);
   };
 
-  const submitForm = (e: FormEvent<HTMLFormElement>) => {
+  // Modified submitForm: No need for book[] array handling
+    const submitForm = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    console.log("Form submitted with data:", intBook);
-    alert("Form submitted successfully (mock).");
-    setBook(initialBook); // Reset form fields
+    console.log("Payload sent to backend:", intBook);
+    try {
+      const response = await axios.post('https://localhost:7270/api/Books', intBook, {
+        headers: {
+          "Content-Type": "application/json",}
+        });
+      
+      if (response.status === 200) {
+        console.log("Book Submitted Successfully");
+        alert("Book Submitted Successfully");
+        setBook(initialBook);
+        window.location.reload(); //  refresh the entire page
+      } 
+      
+    } catch (err) {
+      console.error("Error submitting the book:", err);
+      alert("Book is not Submitted. Please try again.");
+    }
   };
 
-return (
+  return (
     <div className="addNewBook">
       {/* Heading */}
       <div className="heading">
-        <h2>Add New Book</h2>
+        <h2>Add Newsss Book</h2>
         <button className="closeButton" onClick={onClose}>
           <CloseIcon />
         </button>
@@ -57,26 +72,15 @@ return (
         {/* Row 1 */}
         <div className="row1">
           <div className="labelCol">
-            <label htmlFor="bookID">Book ID:</label>
+            <label htmlFor="title">Book Title:</label>
             <input
               type="text"
-              id="bookID"
-              name="bookID"
-              value={intBook.bookID}
-              placeholder="Enter book ID"
-              onChange={inputHandlers}
-            />
-          </div>
-
-          <div className="labelCol">
-            <label htmlFor="bookName">Book Title:</label>
-            <input
-              type="text"
-              id="bookName"
-              name="bookName"
-              value={intBook.bookName}
+              id="title"
+              name="title"
+              value={intBook.title}
               placeholder="Enter book name"
               onChange={inputHandlers}
+              required
             />
           </div>
         </div>
@@ -95,6 +99,7 @@ return (
               value={intBook.author}
               placeholder="Enter Author name"
               onChange={inputHandlers}
+              required
             />
           </div>
         </div>
@@ -103,7 +108,13 @@ return (
         <div className="row1">
           <div className="labelCol">
             <label htmlFor="category">Category:</label>
-            <select id="category" name="category" value={intBook.category} onChange={inputHandlers}>
+            <select
+              id="category"
+              name="category"
+              value={intBook.category}
+              onChange={inputHandlers}
+              required
+            >
               <option value="">Select Category</option>
               <option value="Novels">Novels</option>
               <option value="Short Stories">Short Stories</option>
@@ -113,14 +124,35 @@ return (
               <option value="History and Geography">History and Geography</option>
             </select>
           </div>
-
-          <div className="row1">
-          <div className="labelCol">
-            <label htmlFor="other">Other Details :</label>
-            <input type="text" id="other" name="other" value={intBook.other}  placeholder="Enter book ID" onChange={inputHandlers} />
-          </div>
-
         </div>
+
+        {/* Row 4 */}
+        <div className="row2">
+          <div className="labelCol">
+            <label htmlFor="entrydDate">Entry Date:</label>
+            <input
+              type="date"
+              name="entrydDate" // Use the typo to match backend
+              value={intBook.entrydDate}
+              onChange={inputHandlers}
+              required
+            />
+          </div>
+        </div>
+
+        {/* Row 5 */}
+        <div className="row1">
+          <div className="labelCol">
+            <label htmlFor="description">Other Details:</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={intBook.description}
+              placeholder="Description"
+              onChange={inputHandlers}
+            />
+          </div>
         </div>
 
         {/* Submit button */}
