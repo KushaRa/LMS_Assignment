@@ -86,8 +86,9 @@ const BookTable = () => {
               <td>{item.entrydDate}</td>
               <td>{item.category}</td>
               <td>{item.description}</td>
-              <td><EditIcon />  
+              <td><EditIcon  onClick ={() => handleEditBook(item.id)}/>
               <DeleteIcon onClick={() => handleDeleteBook(item, navigate)} /></td>
+            
             </tr>
           ))}
         </tbody>
