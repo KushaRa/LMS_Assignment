@@ -61,7 +61,7 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
     <div className="addNewBook">
       {/* Heading */}
       <div className="heading">
-        <h2>Add News Book</h2>
+        <h2>Add New Book</h2>
         <button className="closeButton" onClick={onClose}>
           <CloseIcon />
         </button>
