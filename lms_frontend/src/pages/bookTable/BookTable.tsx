@@ -4,7 +4,7 @@ import './BookTable.css';
 import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Book } from '@mui/icons-material';
+
 
 
 interface Book {
@@ -20,11 +20,10 @@ const BookTable = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<Book[]>([]);
   const [error, setError] = useState<string | null>(null);
-  //const [selectedBook, setSelectedBook] = useState<Book | null>(null);
- // const [updateBook, setUpdateBook] = useState<Book | null>(null);
-  //const navigate = useNavigate();
 
- 
+  const handleEditBook = (id: string) =>{
+    navigate(`/edit-book/${id}`);
+}
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,59 +93,7 @@ const BookTable = () => {
         </tbody>
       </table>
 
-     {/* {selectedBook && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Edit Book</h2>
-            <form>
-              <div className="row1">
-                <label>Book Title:</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={updateBook.title}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="row1">
-                <label>Author:</label>
-                <input
-                  type="text"
-                  name="author"
-                  value={updateBook.author}
-                  onChange={handleInputChange}
-                />
-                <label>Entry Date:</label>
-                <input
-                  type="date"
-                  name="entrydDate"
-                  value={updateBook.entrydDate}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="row1">
-                <label>Category:</label>
-                <input
-                  type="text"
-                  name="category"
-                  value={updateBook.category}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <label>Description :</label>
-              <input
-                type="text"
-                name="description"
-                value={updateBook.description}
-                onChange={handleInputChange}
-              />
-              <button type="button" onClick={handleUpdateBook}>Save</button>
-              <button type="button" onClick={handleDeleteBook}>Delete</button>
-              <button type="button" onClick={() => setSelectedBook(null)}>Cancel</button>
-            </form>
-          </div>
-        </div>
-      )}*/}
+    
     </div>
   );
 };
