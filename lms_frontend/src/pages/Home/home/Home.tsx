@@ -25,7 +25,7 @@ const Home: React.FC = () => {
           <div className="buttonSection">
             <div className="addBookContainer">
               <button className="AddBook" onClick={handleOpen}>
-                Add Book/issue book
+                Add Book
               </button>
             <div className="search-bar" style={{ margin: "20px" }}>
             <input
