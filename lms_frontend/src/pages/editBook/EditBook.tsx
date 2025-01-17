@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './EditBook.css';
+import CloseIcon from "@mui/icons-material/Close";
 
 interface Book {
   id: string;
@@ -62,8 +63,13 @@ const EditBook: React.FC = () => {
 
   return (
     <div className='editclass'>
-      <div className="headingEdit">
-        <h2>Edit Book</h2>
+    <div className="headingEdit">
+    <div className="heading">
+      <h2>Edit Book</h2>
+      <button className="closeButton" onClick={() => navigate('/home')}>
+        <CloseIcon />
+      </button>
+    </div>
       
       <form>
         <label>Book Title:</label>

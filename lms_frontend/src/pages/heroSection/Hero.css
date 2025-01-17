@@ -1,0 +1,97 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+}
+
+.hero-left {
+    background-image: url('../../assets/hero3.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    /* Added subtle overlay for better text contrast */
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    
+}
+
+.lnavbar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    
+}
+
+.hero-left h1 {
+    color: #fff;
+    font-size: 4rem; /* Slightly reduced for balance */
+    margin-bottom: 10px;
+    margin-top: 0px;
+    line-height: 1.2; /* Added line-height for better readability */
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.hero-left p {
+    color: #fff;
+    font-size: 1.25rem; /* Adjusted size for balance */
+    margin-bottom: 30px;
+    margin-left: 15%;
+    margin-right: 15%;
+    line-height: 1.5; /* Improved readability */
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.heroLoginbtn button {
+    background-color: rgb(14, 156, 14);
+    color: #000000;
+    border: none;
+    padding: 12px 25px; /* Increased padding for better appearance */
+    border-radius: 20px; /* Slightly rounder button */
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.heroLoginbtn button:hover {
+    background-color: #ffffff;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+@media (max-width: 768px) {
+    .hero-left h1 {
+        font-size: 2.5rem; /* Adjusted font size for tablets */
+        margin-top: 50px;
+    }
+    .hero-left p {
+        font-size: 1rem; /* Adjusted font size for better readability */
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-left h1 {
+        font-size: 1.75rem; /* Reduced font size for smaller screens */
+        margin-top: 30px;
+    }
+    .hero-left p {
+        font-size: 0.9rem; /* Further adjusted for smaller screens */
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .heroLoginbtn button {
+        font-size: 1rem; /* Consistent button size */
+        padding: 10px 20px; /* Adjusted padding */
+    }
+}
