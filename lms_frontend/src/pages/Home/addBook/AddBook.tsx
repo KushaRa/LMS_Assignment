@@ -4,7 +4,6 @@ import "./AddBook.css";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 
-
 interface Book {
   title: string;
   author: string;
@@ -69,8 +68,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
 
       {/* Form */}
       <form onSubmit={submitForm}>
-        {/* Row  */}
-        <div className="row1">
+        {/* Row 1 */}
+        <div className="row">
           <div className="labelCol">
             <label htmlFor="title">Book Title:</label>
             <input
@@ -85,11 +84,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Section heading */}
-        <h3>Book Information</h3>
-
-        {/* Row  */}
-        <div className="row2">
+        {/* Row 2 */}
+        <div className="row">
           <div className="labelCol">
             <label htmlFor="author">Author:</label>
             <input
@@ -104,8 +100,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Row  */}
-        <div className="row3">
+        {/* Row 3 */}
+        <div className="row">
           <div className="labelCol">
             <label htmlFor="category">Category:</label>
             <select
@@ -126,8 +122,8 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Row  */}
-        <div className="row4">
+        {/* Row 4 */}
+        <div className="row">
           <div className="labelCol">
             <label htmlFor="entrydDate">Entry Date:</label>
             <input
@@ -140,10 +136,10 @@ const AddBook: React.FC<AddBookProps> = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Row  */}
-        <div className="row5">
+        {/* Row 5 */}
+        <div className="row1">
           <div className="labelCol">
-            <label htmlFor="description">Other Details:</label>
+            <label htmlFor="description">Description:</label>
             <input
               type="text"
               id="description"

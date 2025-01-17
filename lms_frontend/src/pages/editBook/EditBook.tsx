@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './EditBook.css';
+import CloseIcon from "@mui/icons-material/Close";
 
 interface Book {
   id: string;
@@ -19,8 +20,8 @@ const EditBook: React.FC = () => {
   const [updateBook, setUpdateBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Fetch book details when component mounts
+ 
+   // Fetch book details when component mounts
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
@@ -63,7 +64,12 @@ const EditBook: React.FC = () => {
   return (
     <div className='editclass'>
       <div className="headingEdit">
+      <div className="heading">
         <h2>Edit Book</h2>
+        <button className="closeButton" onClick={() => navigate('/')}>
+          <CloseIcon />
+        </button>
+      </div>
       
       <form>
         <label>Book Title:</label>
@@ -107,7 +113,7 @@ const EditBook: React.FC = () => {
         <button className= 'saveButton' type="button" onClick={handleUpdateBook}>
           Save
         </button>
-        <button className= 'cancelButton' type="button" onClick={() => navigate('/')}>
+        <button className= 'cancelButton' type="button" onClick={() => navigate('/home')}>
           Cancel
         </button>
       </form>
