@@ -21,6 +21,29 @@
     box-sizing: border-box;
     text-align: center;
   }
+   .heading {
+    display: flex;
+    color:#555;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .heading h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .heading .closeButton {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.2s ease;
+  }
+  
   
   /* Form field styles */
   form {

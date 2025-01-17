@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import NavBar from "../../../components/navBar";
 import AddBook from "../addBook/AddBook";
-//import BookTable from "../BookTable/bookTable";
+import BookTable from "../../bookTable/BookTable";
 import "./Home.css";
+
 
 const Home: React.FC = () => {
   const [formOpen, setFormOpen] = useState<boolean>(false);
@@ -48,6 +49,7 @@ const Home: React.FC = () => {
 
         <div className="summaryTable" style={{ backgroundColor: "white" }}>
          
+         <BookTable/>
 
           <div className="bkTab" style={{ margin: "20px" }}>
             

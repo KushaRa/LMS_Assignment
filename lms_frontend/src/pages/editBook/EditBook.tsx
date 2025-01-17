@@ -51,7 +51,7 @@ const EditBook: React.FC = () => {
     try {
       await axios.put(`https://localhost:7270/api/Books/${updateBook.id}`, updateBook);
       alert('Book updated successfully');
-      navigate('/'); // Navigate back to the BookTable after updating
+      navigate('/home'); // Navigate back to the BookTable after updating
     } catch (err) {
       setError('Failed to update the book');
       console.error(err);
@@ -66,7 +66,7 @@ const EditBook: React.FC = () => {
       <div className="headingEdit">
       <div className="heading">
         <h2>Edit Book</h2>
-        <button className="closeButton" onClick={() => navigate('/')}>
+        <button className="closeButton" onClick={() => navigate('/home')}>
           <CloseIcon />
         </button>
       </div>
